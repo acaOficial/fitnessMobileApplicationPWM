@@ -31,4 +31,29 @@ export class UserService {
 
   }
 
+  
+  updateUser(userId: string, name: string, imageUrl: string, gender: string): Promise<void> {
+    const user = { name, imageUrl, gender };
+    
+    // Realizar una consulta para encontrar el documento que contiene el usuario con la ID especificada
+    return this.firestore.collection('usuariosIonic', ref => ref.where('id', '==', userId))
+      .get()
+      .toPromise()
+      .then(querySnapshot => {
+        if (querySnapshot.size === 1) {
+          // Obtener el ID del documento que contiene el usuario
+          const docId = querySnapshot.docs[0].id;
+          
+          // Actualizar los campos del usuario dentro del documento
+          return this.firestore.collection('usuariosIonic').doc(docId).update(user);
+        } else {
+          throw new Error('No se encontró un usuario con la ID especificada.');
+        }
+      })
+      .catch(error => {
+        console.error('Error al actualizar usuario:', error);
+        throw error;
+      });
+  }
+  
 }

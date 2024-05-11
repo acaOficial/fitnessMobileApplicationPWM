@@ -15,6 +15,7 @@ export class ProfileEditPage implements OnInit {
   birthdate: string;
   gender: string;
   profileImage: File;
+  selectedFile: File;
 
   constructor(
     private userMagement: UserService,
@@ -27,24 +28,29 @@ export class ProfileEditPage implements OnInit {
   getUserData() {
     const userId = sessionStorage.getItem('uid');
     this.userMagement.getUser(userId).subscribe(users => {
-      this.userEmail = users[0].email;
       this.userName = users[0].name;
       this.imageUrl = users[0].imageUrl;
-      this.birthdate = users[0].birthdate;
       this.gender = users[0].gender;
     });
   }
 
   guardarCambios() {
+    this.userMagement.updateUser(sessionStorage.getItem('uid'), this.userName, this.imageUrl, this.gender);
     this.router.navigate(['/profile']);
   }
 
 
   onFileSelected(event: any) {
     // Manejar la selección de archivo
-    const file: File = event.target.files[0];
-    if (file) {
-      this.profileImage = file;
+    this.selectedFile = event.target.files[0];
+
+    // Convertir el archivo a una URL
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageUrl = reader.result as string;
+      };
+      reader.readAsDataURL(this.selectedFile);
     }
   }
 
