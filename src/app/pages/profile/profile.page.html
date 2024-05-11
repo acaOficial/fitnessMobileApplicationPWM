@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="products"></ion-back-button>
+      <ion-back-button defaultHref="products" routerLink="/products"></ion-back-button>
     </ion-buttons>
     <ion-title>Perfil</ion-title>
   </ion-toolbar>
@@ -27,5 +27,6 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-button expand="block" (click)="navigateTo('/editar-perfil')">Editar Perfil</ion-button>
+  <ion-button expand="block" (click)="navigateTo('profile/profile-edit')">Editar Perfil</ion-button>
+
 </ion-content>

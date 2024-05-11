@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Editar Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarCambios()">Guardar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <img [src]="imageUrl" *ngIf="imageUrl" class="profile-image" />
+  
+  <form>
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input [(ngModel)]="userName" name="userName" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Género</ion-label>
+      <ion-select [(ngModel)]="gender" name="gender">
+        <ion-select-option value="male">Masculino</ion-select-option>
+        <ion-select-option value="female">Femenino</ion-select-option>
+        <ion-select-option value="other">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Imagen de Perfil</ion-label>
+      <input type="file" accept="image/*" (change)="onFileSelected($event)">
+    </ion-item>
+    
+  </form>
+</ion-content>
