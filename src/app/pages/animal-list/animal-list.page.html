@@ -10,7 +10,7 @@
         <ion-icon name="cart" slot="start"></ion-icon>
         Productos
       </ion-item>
-      <ion-item >
+      <ion-item (click)="navigateTo('profile')">
         <ion-icon name="person" slot="start"></ion-icon>
         Perfil
       </ion-item>
@@ -47,7 +47,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let product of products; let i = index ">
       <ion-item
-        [routerLink]="['/animals', product.id]"
+        [routerLink]="['/products', product.id]"
         class="ion-no-padding"
         style="margin: 4px !important">
 

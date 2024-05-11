@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="products"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-avatar slot="start">
+      <img [src]="userImage" *ngIf="userImage" />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ userName }}</h2>
+      <p>{{ userEmail }}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>
