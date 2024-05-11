@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from "../../models/product.model";
 import { ProductService } from "../../services/product.service";
 import {DatabaseService} from "../../services/database.service";
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-animal-list",
@@ -21,7 +23,9 @@ export class ProductListPage implements OnInit {
 
   constructor(
     private sqlite: DatabaseService,
-    private productService: ProductService
+    private productService: ProductService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -95,5 +99,14 @@ export class ProductListPage implements OnInit {
   toggleFavorite(product: Product): void {
     if(this.isFavorite(product)) this.deleteFavorite(product);
     else this.createFavorite(product);
+  }
+
+  signOut() {
+    this.authService.signOut();
+    this.router.navigate(['/login']);
+  }
+
+  navigateTo(page: string) {
+    this.router.navigate([page]);
   }
 }

@@ -33,7 +33,7 @@ export class RegisterPage implements OnInit {
 
       const credential = await this.authService.signUp(this.name, this.email, this.password);
       console.log('Usuario creado exitosamente:', credential);
-      this.router.navigate(['/animals']);
+      this.router.navigate(['/products']);
     } catch (error) {
       console.error('Error al registrar usuario:', error);
     }

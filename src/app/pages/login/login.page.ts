@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
     try {
       const credential = await this.authService.signIn(this.email, this.password);
       console.log('Usuario iniciado exitosamente:', credential);
-      this.router.navigate(['/animals']);
+      this.router.navigate(['/products']);
     } catch (error) {
       // Maneja el error aquí
       console.error('Error al iniciar sesion de usuario:', error);
