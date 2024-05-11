@@ -11,10 +11,10 @@ export class UserService {
 
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore,) { }
 
-  async insertUser(id: string, name: string, email: string): Promise<void> {
+  async insertUser(id: string, name: string, email: string, imageUrl: string): Promise<void> {
     try {
-      // Crear un objeto de usuario
-      const user = { id, name, email };
+      // Crear un objeto de usuario 
+      const user = { id, name, email, imageUrl};
 
       // Insertar el usuario en la colección "usuariosIonic"
       const docRef = await this.firestore.collection('usuariosIonic').add(user);

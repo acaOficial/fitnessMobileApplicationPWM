@@ -13,7 +13,8 @@ export class RegisterPage implements OnInit {
   email: string = '';
   password: string = '';
   repeatPassword: string = '';
-  //selectedFile: File;
+  selectedFile: File;
+  fileUrl: string; // Variable para almacenar la URL del archivo seleccionad
 
   constructor(
   private authService: AuthService,
@@ -31,14 +32,16 @@ export class RegisterPage implements OnInit {
         return;
       }
 
-      const credential = await this.authService.signUp(this.name, this.email, this.password);
+      const credential = await this.authService.signUp(this.name, this.email, this.password, this.fileUrl);
+
+      console.log('URL del archivo:', this.fileUrl);
       console.log('Usuario creado exitosamente:', credential);
       this.router.navigate(['/products']);
     } catch (error) {
       console.error('Error al registrar usuario:', error);
     }
 
-    //console.log('Archivo seleccionado:', this.selectedFile ? this.selectedFile.name : 'Ninguno');
+    console.log('Archivo seleccionado:', this.selectedFile ? this.selectedFile.name : 'Ninguno');
   }
 
 
@@ -46,9 +49,19 @@ export class RegisterPage implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  /*onFileSelected(event) {
+
+  onFileSelected(event) {
     // Manejar la selección de archivo
     this.selectedFile = event.target.files[0];
+
+    // Convertir el archivo a una URL
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.fileUrl = reader.result as string;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
   }
-*/
+
 }

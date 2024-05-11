@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ProfilePage implements OnInit {
   userName: string;
   userEmail: string;
-  userImage: string;
+  imageUrl: string;
 
   constructor(
   private userMagement: UserService,
@@ -32,7 +32,7 @@ export class ProfilePage implements OnInit {
     this.userMagement.getUser(userId).subscribe(users => {
       this.userEmail = users[0].email;
       this.userName = users[0].name;
-      this.userImage = users[0].imagen;
+      this.imageUrl = users[0].imageUrl;
     });
 
   }
