@@ -9,12 +9,15 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterPage implements OnInit {
 
-  name: string = '';
-  email: string = '';
-  password: string = '';
-  repeatPassword: string = '';
+  name: string;
+  email: string;
+  password: string;
+  repeatPassword: string;
+  birthdate: string;
+  gender: string;
   selectedFile: File;
-  fileUrl: string; // Variable para almacenar la URL del archivo seleccionad
+  fileUrl: string;
+
 
   constructor(
   private authService: AuthService,
@@ -32,7 +35,7 @@ export class RegisterPage implements OnInit {
         return;
       }
 
-      const credential = await this.authService.signUp(this.name, this.email, this.password, this.fileUrl);
+      const credential = await this.authService.signUp(this.name, this.email, this.password, this.fileUrl, this.birthdate, this.gender);
 
       console.log('URL del archivo:', this.fileUrl);
       console.log('Usuario creado exitosamente:', credential);

@@ -32,6 +32,20 @@
           </ion-item>
 
           <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-input type="date" [(ngModel)]="birthdate" name="birthdate" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Género</ion-label>
+            <ion-select [(ngModel)]="gender" name="gender">
+              <ion-select-option value="male">Masculino</ion-select-option>
+              <ion-select-option value="female">Femenino</ion-select-option>
+              <ion-select-option value="other">Otro</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
             <ion-label position="stacked">Subir Imagen</ion-label>
             <ion-input type="file" (change)="onFileSelected($event)" accept="image/*"></ion-input>
           </ion-item>

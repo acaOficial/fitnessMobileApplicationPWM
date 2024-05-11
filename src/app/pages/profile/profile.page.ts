@@ -12,6 +12,8 @@ export class ProfilePage implements OnInit {
   userName: string;
   userEmail: string;
   imageUrl: string;
+  birthdate: string;
+  gender: string;
 
   constructor(
   private userMagement: UserService,
@@ -33,6 +35,8 @@ export class ProfilePage implements OnInit {
       this.userEmail = users[0].email;
       this.userName = users[0].name;
       this.imageUrl = users[0].imageUrl;
+      this.birthdate = users[0].birthdate;
+      this.gender = users[0].gender;
     });
 
   }

@@ -9,13 +9,23 @@
 
 
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-avatar slot="start">
-      <img [src]="imageUrl" *ngIf="imageUrl" />
-    </ion-avatar>
-    <ion-label>
-      <h2>{{ userName }}</h2>
-      <p>{{ userEmail }}</p>
-    </ion-label>
-  </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ userName }}</ion-card-title>
+      <ion-card-subtitle>{{ userEmail }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <img [src]="imageUrl" *ngIf="imageUrl" class="profile-image" />
+      <ion-item>
+        <ion-label>Fecha de nacimiento:</ion-label>
+        <ion-text>{{ birthdate }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Género:</ion-label>
+        <ion-text>{{ gender }}</ion-text>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="navigateTo('/editar-perfil')">Editar Perfil</ion-button>
 </ion-content>

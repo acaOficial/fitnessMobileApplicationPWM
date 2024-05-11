@@ -10,14 +10,14 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private userMagement: UserService) { }
 
-  async signUp(name:string, email: string, password: string, imageUrl: string): Promise<UserCredential> {
+  async signUp(name:string, email: string, password: string, imageUrl: string, birthdate: string, gender: string): Promise<UserCredential> {
     try {
 
       // Crear un usuario con email y contraseña
       const credential = await this.afAuth.createUserWithEmailAndPassword(email, password);
 
       // Insertar el usuario en la colección "usuariosIonic"
-      await this.userMagement.insertUser(credential.user.uid, name, email, imageUrl);
+      await this.userMagement.insertUser(credential.user.uid, name, email, imageUrl, birthdate, gender);
 
       // Almacenar el ID de usuario en sessionStorage
       sessionStorage.setItem('uid', credential.user.uid);
