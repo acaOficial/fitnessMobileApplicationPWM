@@ -29,3 +29,31 @@ img{
 #container a {
   text-decoration: none;
 }
+
+
+// Estilos específicos para la página de detalles del producto
+
+
+.product-image {
+  width: 100%; // La imagen ocupa todo el ancho del card
+  border-radius: 8px; // Bordes redondeados para la imagen
+}
+
+.product-title {
+  font-size: 1.5rem; // Tamaño del título del producto
+  font-weight: bold; // Texto en negrita
+}
+
+.product-description {
+  font-size: 1.2rem; // Tamaño del texto de la descripción del producto
+}
+
+ion-item {
+  margin-top: 20px; // Espacio superior entre el interruptor de favorito y el contenido
+}
+
+ion-toggle {
+  --background: #4CAF50; // Color de fondo del interruptor cuando está activado
+  --handle-background: #fff; // Color de fondo del asa del interruptor
+}
+

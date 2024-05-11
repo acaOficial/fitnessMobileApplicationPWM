@@ -1,32 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="animals"></ion-back-button>
+      <ion-back-button defaultHref="products"></ion-back-button>
     </ion-buttons>
     <ion-title>Detalles del Producto</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngIf="product" class="ion-no-margin" style="margin: 4px !important">
-    <img [src]="product.url" />
+<ion-content class="ion-padding">
+  <ion-card *ngIf="product" class="ion-no-margin">
+    <img [src]="product.url" class="product-image" />
 
     <ion-card-header>
-      <ion-card-title>{{ product.nombre }}</ion-card-title>
+      <ion-card-title class="product-title">{{ product.nombre }}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      <p>{{ product.descripcion }}</p>
+      <p class="product-description">{{ product.descripcion }}</p>
     </ion-card-content>
 
     <ion-item lines="none">
       <ion-label>Favorito</ion-label>
-
-      <ion-toggle
-        [(ngModel)]="favorite"
-        (ngModelChange)="toggleFavorite()"></ion-toggle>
+      <ion-toggle [(ngModel)]="favorite" (ngModelChange)="toggleFavorite()"></ion-toggle>
     </ion-item>
-
-    <br />
   </ion-card>
 </ion-content>
