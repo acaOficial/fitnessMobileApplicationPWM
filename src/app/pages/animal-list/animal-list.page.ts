@@ -10,10 +10,12 @@ import {DatabaseService} from "../../services/database.service";
 })
 export class ProductListPage implements OnInit {
 
+  
   products: Product[] = [];
   favorites: Product[] = [];
   linkImages: string[] = [];
   userID: string = '';
+  items: string[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 
   allImagesLoaded = false;
 
@@ -23,6 +25,7 @@ export class ProductListPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    
 
     this.userID = sessionStorage.getItem('uid');
     console.log("ngOnInit");
@@ -59,6 +62,7 @@ export class ProductListPage implements OnInit {
     this.productService.getAllProducts()
       .subscribe((products) => {
         this.products = products;
+        console.log(this.products)
 
       });
   }

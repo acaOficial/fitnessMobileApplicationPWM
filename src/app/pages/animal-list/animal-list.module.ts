@@ -17,4 +17,4 @@ import { ProductListPage } from './animal-list.page';
   ],
   declarations: [ProductListPage]
 })
-export class AnimalListPageModule {}
+export class ProductListPageModule {}

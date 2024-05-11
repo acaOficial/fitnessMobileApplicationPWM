@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: 'animals',
     loadChildren: () =>
-      import('./pages/animal-list/animal-list.module').then( m => m.AnimalListPageModule)
+      import('./pages/animal-list/animal-list.module').then( m => m.ProductListPageModule)
   },
   {
     path: 'animals/:id',
     loadChildren: () =>
-      import('./pages/animal-detail/animal-detail.module').then( m => m.AnimalDetailPageModule)
+      import('./pages/animal-detail/animal-detail.module').then( m => m.ProductDetailPageModule)
   },
   {
     path: '',
