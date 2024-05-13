@@ -48,8 +48,9 @@ export class AuthService {
     try {
       await this.afAuth.signOut();
 
-      // Eliminar el ID de usuario de sessionStorage
-      sessionStorage.removeItem('uid');
+      sessionStorage.clear();
+
+      window.location.href = window.location.href + '?nocache=' + new Date().getTime();
 
     } catch (error) {
       console.error('Error al cerrar sesión:', error);

@@ -17,9 +17,7 @@ export class ProductListPage implements OnInit {
   favorites: Product[] = [];
   linkImages: string[] = [];
   userID: string = '';
-  items: string[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
-
-  allImagesLoaded = false;
+  refresh: boolean = false;
 
   constructor(
     private sqlite: DatabaseService,
@@ -28,9 +26,7 @@ export class ProductListPage implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
-    
-
+  ngOnInit() {    
     this.userID = sessionStorage.getItem('uid');
     console.log("ngOnInit");
   }
