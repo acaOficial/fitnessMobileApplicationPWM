@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { UserCredential } from '@firebase/auth-types';
 import { UserService } from './user.service';
+import {Device} from "@capacitor/device";
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,11 @@ export class AuthService {
 
       sessionStorage.clear();
 
-      window.location.href = window.location.href + '?nocache=' + new Date().getTime();
+      const info = await Device.getInfo();
+      
+      if (info.platform === 'web'){
+        window.location.href = window.location.href + '?nocache=' + new Date().getTime();
+      }      
 
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
